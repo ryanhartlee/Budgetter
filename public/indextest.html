@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Main</title>
+  <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- Numeric JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+  <nav class="colornav">
+    <div class="nav-wrapper container">
+      <button class="sidenav-trigger" data-target="slide-out"><i class="fas fa-bars"></i></button>
+      <a href="#!" class="brand-logo">Budgetter</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="waves-effect" href="/">Logout</a></li>
+        <a class='dropdown-trigger btn' href='#' data-target='dropdown1' id="dd1">Personalize</a>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!">Red</a></li>
+          <li><a href="#!">Black</a></li>
+          <li><a href="#!">Orange</a></li>
+          <li><a href="#!">Green</a></li>
+          <li><a href="#!">Teal</a></li>
+          <li><a href="#!">Purple</a></li>
+        </ul>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Sidenav -->
+  <ul id="slide-out" class="sidenav">
+    <li>
+      <div class="user-view">
+        <h3 id="username"></h3>
+        <h5 id="income"></h5>
+      </div>
+      <div class="divider"></div>
+    </li>
+    <li><a href="#!" id="viewexpenses">View Expenses</a></li>
+    <li><a class="modal-trigger" href="#modal1" id="newexpense">Enter New Expenses</a></li>
+    <li><a class="modal-trigger" href="#updateIncomeModal" id="updatemonthly">Update Monthly Income</a></li>
+  </ul>
+  <br>
+
+  <!-- Add expense Modal -->
+  <div class="container">
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Enter Expense</h4>
+        <div class="row">
+          <form class="col s12" id="addExpMod">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="addexpense-amount" type="text">
+                <label for="amount">Amount</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="addexpense-note" type="text">
+                <label for="note">Notes</label>
+              </div>
+            </div>
+            <br>
+            <select class="browser-default" id="expCategory">
+              <option value="" disabled selected>Choose your category</option>
+              <option value="bills">Bills</option>
+              <option value="food">Food</option>
+              <option value="entertainment">Entertainment</option>
+            </select>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="addExp">Add</a>
+      </div>
+    </div>
+  </div>
+
+
+<!-- update income modal -->
+  <div id="updateIncomeModal" class="modal">
+    <div class="modal-content">
+      <h4>Update Monthly Income</h4>
+      <div class="row">
+        <form class="col s12" id="updateMod">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="updateIncome" type="text">
+              <label for="income">New Income</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="incomeUpdation">Update</a>
+        </div>
+    </div>
+  </div>
+
+<!-- graph modal -->
+  <div id="graphModal" class="modal">
+      <div class="modal-content">
+        <h4>Monthly Income</h4>
+        <div class="container">
+            <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+        </div>
+      </div>
+    </div>
+
+
+
+  <div id="content">
+    <div class="container">
+    <div class="jumbotron" id="jumbo">
+      <h3>Welcome to Budgetter</h3>
+      <br>
+      <div class="divider"></div>
+      <br>
+      <h5>Use the menu to the left to choose what you want to do.</h5>
+    </div>
+  </div>
+
+    <!-- Expense tables -->
+    <div class="container" id="showexpenses">
+      <div class="container">
+        <h2>Expenses</h2>
+        <br>
+        <div id="details" class="z-depth-2">
+          <h5 id="inc" class="col s4"></h5>
+          <h5 id="total" class="col s4">Total: $0</h5>
+          <h5 id="Bal" class="col s4"></h5>
+        </div>
+      </div>
+      <button class="btn modal-trigger" href="#modal1">Enter New Expenses</button>
+      <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Date</a>
+      <ul id='dropdown2' class='dropdown-content'>
+        <li><a href="#!">This Week</a></li>
+        <li><a href="#!">This Month</a></li>
+        <li><a href="#!">This Year</a></li>
+      </ul>
+      <a class='dropdown-trigger btn' href='#' data-target='dropdown3'>Category</a>
+      <ul id='dropdown3' class='dropdown-content'>
+        <li><a href="#!">Bills</a></li>
+        <li><a href="#!">Food</a></li>
+        <li><a href="#!">Entertainment</a></li>
+      </ul>
+      <button class="modal-trigger btn" href="#graphModal" id="viewGraph">View Graph</button>
+      
+      <table>
+        <thead>
+          <tr>
+            <!-- <th>ID</th> -->
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Expense Note</th>
+            <th>Category</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="expTable">
+
+        </tbody>
+      </table>
+      <br><br>
+    </div>
+    
+  </div>
+</body>
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+<script src="js/index.js"></script>
+<script src="plotly-latest.min.js"></script>
+
+</html>

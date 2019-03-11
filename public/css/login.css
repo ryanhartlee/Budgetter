@@ -1,0 +1,27 @@
+#logincontainer {
+    justify-content: center;
+    padding-left: 30%;
+    padding-right: 30%;
+    padding-top: 2%;
+    
+}
+
+#loginentry {
+    background-color: rgba(240, 240, 240, 0.658)
+}
+
+.card-title {
+    text-align: center;
+    padding-top: 10px;
+}
+
+body {
+    background-image: url("loginwallpaper.png");
+    /* background-size: 100%; */
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+a:hover {
+    color: white;
+}

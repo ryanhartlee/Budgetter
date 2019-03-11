@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+#foot {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#dd1 {
+  color: white;
+}
+
+
+a:hover {
+  color: white;
+}
+
+#modal1,
+#updateIncomeModal,
+#balance {
+  width: 50vh;
+  height: auto;
+}
+
+#details {
+  justify-content: right;
+  float: right;
+  padding: 5px;
+}
+
+#graphModal {
+  width: 60%;
+  height: auto;
+}
+
+#myDiv {
+  justify-content: center;
+}
